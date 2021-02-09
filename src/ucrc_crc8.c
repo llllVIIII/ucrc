@@ -32,7 +32,7 @@ int deinit(ucrc_desc_t* h)
     return 0;
 }
 
-const ucrc_backend_t ucrc_backend_crc8 = {
+const ucrc_api_t ucrc_api_crc8 = {
     .init = init,
     .update = update,
     .complete = complete,

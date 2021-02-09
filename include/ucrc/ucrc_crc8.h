@@ -12,4 +12,4 @@ typedef struct ucrc_crc8_data_s {
     size_t lut_size;
 } ucrc_crc8_data_t;
 
-extern const ucrc_backend_t ucrc_backend_crc8;
+extern const ucrc_api_t ucrc_api_crc8;

@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-typedef struct ucrc_backend_s ucrc_backend_t;
+typedef struct ucrc_api_s ucrc_api_t;
 typedef uint32_t ucrc_result_t;
 
 typedef struct ucrc_settings_s {
@@ -18,7 +18,7 @@ typedef struct ucrc_settings_s {
 } ucrc_settings_t;
 
 typedef struct ucrc_desc_s {
-    ucrc_backend_t const* backend;
+    ucrc_api_t const* api;
     ucrc_settings_t const* settings;
     void* data;
 } ucrc_desc_t;
@@ -28,17 +28,17 @@ typedef int (*ucrc_update_handle_t)(ucrc_desc_t* d, uint8_t const* data, size_t 
 typedef int (*ucrc_complete_handle_t)(ucrc_desc_t* d, ucrc_result_t* r);
 typedef int (*ucrc_deinit_handle_t)(ucrc_desc_t* d);
 
-typedef struct ucrc_backend_s {
+typedef struct ucrc_api_s {
     ucrc_init_handle_t init;
     ucrc_update_handle_t update;
     ucrc_complete_handle_t complete;
     ucrc_deinit_handle_t deinit;
-} ucrc_backend_t;
+} ucrc_api_t;
 
 
-#define ucrc_desc_create(_backend, _settings, _data) \
+#define ucrc_desc_create(_api, _settings, _data) \
     (ucrc_desc_t) { \
-        .backend = &_backend, \
+        .api = &_api, \
         .settings = &_settings, \
         .data = &_data, \
     }

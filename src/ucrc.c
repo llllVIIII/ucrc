@@ -5,7 +5,7 @@ static inline ucrc_desc_t* nonenull_check(ucrc_desc_t* d)
     ucrc_desc_t* success = NULL;
 
     if (NULL != d 
-        && NULL != d->backend)
+        && NULL != d->api)
     {
         success = d;
     }
@@ -18,9 +18,9 @@ int ucrc_init(ucrc_desc_t* d)
     int success = -1;
 
     if (NULL != nonenull_check(d)
-        && NULL != d->backend->init)
+        && NULL != d->api->init)
     {
-        success = d->backend->init(d);
+        success = d->api->init(d);
     }
     
     return success;
@@ -31,9 +31,9 @@ int ucrc_update(ucrc_desc_t* d, uint8_t const* data, size_t size)
     int success = -1;
 
     if (NULL != nonenull_check(d)
-        && NULL != d->backend->update)
+        && NULL != d->api->update)
     {
-        success = d->backend->update(d, data, size);
+        success = d->api->update(d, data, size);
     }
 
     return success;
@@ -44,9 +44,9 @@ int ucrc_complete(ucrc_desc_t* d, ucrc_result_t* r)
     int success = -1;
 
     if (NULL != nonenull_check(d)
-        && NULL != d->backend->complete)
+        && NULL != d->api->complete)
     {
-        success = d->backend->complete(d, r);
+        success = d->api->complete(d, r);
     }
 
     return success;
@@ -57,9 +57,9 @@ int ucrc_deinit(ucrc_desc_t* d)
     int success = -1;
 
     if (NULL != nonenull_check(d)
-        && NULL != d->backend->deinit)
+        && NULL != d->api->deinit)
     {
-        success = d->backend->deinit(d);
+        success = d->api->deinit(d);
     }
 
     return success;
