@@ -20,7 +20,7 @@ typedef struct ucrc_settings_s {
 typedef struct ucrc_desc_s {
     ucrc_backend_t const* backend;
     ucrc_settings_t const* settings;
-    void* regs;
+    void* data;
 } ucrc_desc_t;
 
 typedef int (*ucrc_init_handle_t)(ucrc_desc_t* d);
@@ -36,11 +36,11 @@ typedef struct ucrc_backend_s {
 } ucrc_backend_t;
 
 
-#define ucrc_desc_create(_backend, _settings, _regs) \
+#define ucrc_desc_create(_backend, _settings, _data) \
     (ucrc_desc_t) { \
         .backend = &_backend, \
         .settings = &_settings, \
-        .regs = &_regs, \
+        .data = &_data, \
     }
 
 int ucrc_init(ucrc_desc_t* d);

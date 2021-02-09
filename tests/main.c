@@ -12,7 +12,7 @@ int main(int argc, char const *argv[])
     uint8_t data[] = {0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39};
     ucrc_desc_t d = ucrc_desc_create(ucrc_backend_crc8, 
                                      ucrc_settings_crc8_crc8, 
-                                     (ucrc_crc8_regs_t){0});
+                                     (ucrc_crc8_data_t){0});
 
     ucrc_init(&d);
     ucrc_update(&d, data, sizeof(data));
