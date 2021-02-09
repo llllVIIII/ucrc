@@ -36,7 +36,7 @@ typedef struct ucrc_api_s {
 } ucrc_api_t;
 
 
-#define ucrc_desc_create(_api, _settings, _data) \
+#define UCRC_DESC_DEFINE(_api, _settings, _data) \
     (ucrc_desc_t) { \
         .api = &_api, \
         .settings = &_settings, \
